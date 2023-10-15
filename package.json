@@ -1,0 +1,35 @@
+{
+  "name": "esp32-cam-ws-server",
+  "version": "1.0.0",
+  "description": "Stream data from ESP32-CAM to web browser via web socket",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "esp32",
+    "cam",
+    "web socket",
+    "ws",
+    "nodejs",
+    "ejs",
+    "express",
+    "mongo",
+    "mongoose"
+  ],
+  "author": "aetherfabian",
+  "license": "ISC",
+  "dependencies": {
+    "await-to-js": "^3.0.0",
+    "ejs": "^3.1.9",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mongoose": "^7.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
