@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // View engine setup
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 const apiRouter = require("./api/routes");

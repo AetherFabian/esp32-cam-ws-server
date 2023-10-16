@@ -1,3 +1,5 @@
+<!-- views/client.ejs -->
+
 <html>
 
 <head>
@@ -7,7 +9,7 @@
 <body>
   <img id="stream_img">
   <script>
-    const img = document.querySelector('img #stream_img');
+    const img = document.querySelector('#stream_img');
     const WS_URL = 'ws://<%=serverHost%>:<%=wsPort%>/';
     const ws = new WebSocket(WS_URL);
 
