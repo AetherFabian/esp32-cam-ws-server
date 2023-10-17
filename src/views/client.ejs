@@ -1,0 +1,29 @@
+<!-- views/client.ejs -->
+
+<html>
+
+<head>
+  <title>ESP32 CAM STREAM</title>
+</head>
+
+<body>
+  <img id="stream_img">
+  <script>
+    const img = document.querySelector('#stream_img');
+    const WS_URL = 'ws://<%=serverHost%>:<%=wsPort%>/';
+    const ws = new WebSocket(WS_URL);
+
+    let urlObject;
+    ws.onopen = () => console.log(`Connected to ${WS_URL}`);
+    ws.onmessage = (message) => {
+      const arrayBuffer = message.data;
+      if (urlObject) {
+        URL.revokeObjectURL(urlObject);
+      }
+      urlObject = URL.createObjectURL(new Blob([arrayBuffer]));
+      img.src = urlObject;
+    }
+  </script>
+</body>
+
+</html>
