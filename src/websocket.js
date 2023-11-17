@@ -13,5 +13,6 @@ module.exports = (port) => {
         else ws.send(data);
       });
     });
+    ws.on('error', (err) => console.log(err));
   });
 };
