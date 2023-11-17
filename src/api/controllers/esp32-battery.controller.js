@@ -62,16 +62,19 @@ class esp32BatteryController {
   patch = async (req, res) => {
     try {
       const { query: { id } } = req;
-      const { percentageOfTheBatteryOfTheDrone } = await Promise.resolve({
+      const { percentageOfTheBatteryOfTheDrone } = req.body;
+      const dronDTO = {
+        percentageOfTheBatteryOfTheDrone
+      }
+      const data = await Promise.resolve({
         percentageOfTheBatteryOfTheDrone: percentageOfTheBatteryOfTheDrone - 1,
       })
       return res.send({
-          data: {
-            percentageOfTheBatteryOfTheDrone
-          }
+          data
         }
       )
     } catch (error) {
+      console.log(error)
       return res.send({
         data: null,
         error
