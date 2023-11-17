@@ -9,13 +9,20 @@ class esp32BatteryController {
    * @returns 
    */
   get = async (req, res) => {
-    const { query: { id } } = req;
-    const percentageOfTheBatteryOfTheDrone = await Promise.resolve(100)
-    return res.send({ 
-      data: {
-        percentageOfTheBatteryOfTheDrone
-      }
-    })
+    try {
+      const { query: { id } } = req;
+      const data = await Promise.resolve({
+        percentageOfTheBatteryOfTheDrone: 100
+      })
+      return res.send({ 
+        data
+      })
+    } catch (error) {
+      return res.send({
+        data: null,
+        error
+      })
+    }
   }
 
   /**
@@ -25,18 +32,25 @@ class esp32BatteryController {
    * @returns 
    */
   post = async (req, res) => {
-    const { name } = req.body;
-    const { id, percentageOfTheBatteryOfTheDrone } = await Promise.resolve({
-      percentageOfTheBatteryOfTheDrone: 100,
-      id: 1
-    })
-    return res.send({
-        data: {
-          id,
-          percentageOfTheBatteryOfTheDrone
+    try {
+      const { name } = req.body;
+      const dronDTO = {
+        name
+      } 
+      const data = await Promise.resolve({
+        percentageOfTheBatteryOfTheDrone: 100,
+        id: 1
+      })
+      return res.send({
+          data
         }
-      }
-    )
+      )
+    } catch (error) {
+      return res.send({
+        data: null,
+        error
+      })
+    }
   }
 
   /**
@@ -46,16 +60,23 @@ class esp32BatteryController {
    * @returns 
    */
   patch = async (req, res) => {
-    const { query: { id } } = req;
-    const { percentageOfTheBatteryOfTheDrone } = await Promise.resolve({
-      percentageOfTheBatteryOfTheDrone: percentageOfTheBatteryOfTheDrone - 1,
-    })
-    return res.send({
-        data: {
-          percentageOfTheBatteryOfTheDrone
+    try {
+      const { query: { id } } = req;
+      const { percentageOfTheBatteryOfTheDrone } = await Promise.resolve({
+        percentageOfTheBatteryOfTheDrone: percentageOfTheBatteryOfTheDrone - 1,
+      })
+      return res.send({
+          data: {
+            percentageOfTheBatteryOfTheDrone
+          }
         }
-      }
-    )
+      )
+    } catch (error) {
+      return res.send({
+        data: null,
+        error
+      })
+    }
   }
 }
 
