@@ -1,3 +1,4 @@
+const client = require("../../database/mongo");
 
 
 class esp32BatteryController {
@@ -11,9 +12,7 @@ class esp32BatteryController {
   get = async (req, res) => {
     try {
       const { query: { id } } = req;
-      const data = await Promise.resolve({
-        percentageOfTheBatteryOfTheDrone: 100
-      })
+      const data = await client.db("esp32").collection("battery").findOne({ id });
       return res.send({ 
         data
       })
@@ -37,10 +36,7 @@ class esp32BatteryController {
       const dronDTO = {
         name
       } 
-      const data = await Promise.resolve({
-        percentageOfTheBatteryOfTheDrone: 100,
-        id: 1
-      })
+      const data = await client.db("esp32").collection("battery").insertOne(dronDTO);
       return res.send({
           data
         }
@@ -66,9 +62,7 @@ class esp32BatteryController {
       const dronDTO = {
         percentageOfTheBatteryOfTheDrone
       }
-      const data = await Promise.resolve({
-        percentageOfTheBatteryOfTheDrone: percentageOfTheBatteryOfTheDrone - 1,
-      })
+      const data = await client.db("esp32").collection("battery").updateOne({ $where: id }, dronDTO);
       return res.send({
           data
         }
