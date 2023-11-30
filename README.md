@@ -2,6 +2,15 @@
 
 This API provides endpoints to manage information related to the battery of ESP32 devices.
 
+## Usage
+### Environment
+Create a `.env`, then copy and paste the `.env.example`. Then, fill in the environment variables with the appropriate values of you use.
+### Running the API
+```bash
+docker compose up mongodb -d && docker compose up service
+
+```
+
 ## Endpoints
 
 ### 1. Get Battery Information
