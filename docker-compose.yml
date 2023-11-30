@@ -15,7 +15,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - .:/src
 volumes:
   esp_mongo:
