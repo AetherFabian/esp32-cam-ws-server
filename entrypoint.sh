@@ -1,0 +1,3 @@
+ls
+
+npm run start

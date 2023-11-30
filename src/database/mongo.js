@@ -1,8 +1,8 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const { username, password, cluster } = require("../config/index");
+const { mongoUrl} = require("../config/index");
 
 
-const clusterUri = `mongodb+srv://${username}:${password}@${cluster}.sc4h7.mongodb.net/?retryWrites=true&w=majority`;
+const clusterUri = mongoUrl;
 
 const client = new MongoClient(clusterUri, {
   serverApi: {
